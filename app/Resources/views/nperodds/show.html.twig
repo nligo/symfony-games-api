@@ -1,0 +1,136 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Nperodd</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ nperOdd.id }}</td>
+            </tr>
+            <tr>
+                <th>Ajnum</th>
+                <td>{{ nperOdd.ajNum }}</td>
+            </tr>
+            <tr>
+                <th>Ajds</th>
+                <td>{{ nperOdd.ajDs }}</td>
+            </tr>
+            <tr>
+                <th>Ajdx</th>
+                <td>{{ nperOdd.ajDx }}</td>
+            </tr>
+            <tr>
+                <th>Aelh</th>
+                <td>{{ nperOdd.aeLh }}</td>
+            </tr>
+            <tr>
+                <th>Gyd</th>
+                <td>{{ nperOdd.gyd }}</td>
+            </tr>
+            <tr>
+                <th>Gyx</th>
+                <td>{{ nperOdd.gyx }}</td>
+            </tr>
+            <tr>
+                <th>Gys</th>
+                <td>{{ nperOdd.gys }}</td>
+            </tr>
+            <tr>
+                <th>Gydan</th>
+                <td>{{ nperOdd.gydan }}</td>
+            </tr>
+            <tr>
+                <th>Gyc</th>
+                <td>{{ nperOdd.gyc }}</td>
+            </tr>
+            <tr>
+                <th>Gydsi</th>
+                <td>{{ nperOdd.gydsi }}</td>
+            </tr>
+            <tr>
+                <th>Gye</th>
+                <td>{{ nperOdd.gye }}</td>
+            </tr>
+            <tr>
+                <th>Gyf</th>
+                <td>{{ nperOdd.gyf }}</td>
+            </tr>
+            <tr>
+                <th>Gyg</th>
+                <td>{{ nperOdd.gyg }}</td>
+            </tr>
+            <tr>
+                <th>Gyh</th>
+                <td>{{ nperOdd.gyh }}</td>
+            </tr>
+            <tr>
+                <th>Gyi</th>
+                <td>{{ nperOdd.gyi }}</td>
+            </tr>
+            <tr>
+                <th>Gyj</th>
+                <td>{{ nperOdd.gyj }}</td>
+            </tr>
+            <tr>
+                <th>Gyk</th>
+                <td>{{ nperOdd.gyk }}</td>
+            </tr>
+            <tr>
+                <th>Gyl</th>
+                <td>{{ nperOdd.gyl }}</td>
+            </tr>
+            <tr>
+                <th>Gym</th>
+                <td>{{ nperOdd.gym }}</td>
+            </tr>
+            <tr>
+                <th>Gyn</th>
+                <td>{{ nperOdd.gyn }}</td>
+            </tr>
+            <tr>
+                <th>Gyo</th>
+                <td>{{ nperOdd.gyo }}</td>
+            </tr>
+            <tr>
+                <th>Gyp</th>
+                <td>{{ nperOdd.gyp }}</td>
+            </tr>
+            <tr>
+                <th>Gyq</th>
+                <td>{{ nperOdd.gyq }}</td>
+            </tr>
+            <tr>
+                <th>Gyr</th>
+                <td>{{ nperOdd.gyr }}</td>
+            </tr>
+            <tr>
+                <th>Gysj</th>
+                <td>{{ nperOdd.gysj }}</td>
+            </tr>
+            <tr>
+                <th>Createat</th>
+                <td>{{ nperOdd.createAt }}</td>
+            </tr>
+            <tr>
+                <th>Updateat</th>
+                <td>{{ nperOdd.updateAt }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('nperodds_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('nperodds_edit', { 'id': nperOdd.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

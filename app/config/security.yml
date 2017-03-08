@@ -1,0 +1,57 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/security.html
+security:
+    encoders:
+        GamesBundle\Entity\User:
+            algorithm: bcrypt
+    # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+
+        users:
+            entity: { class: GamesBundle:User, property: username }
+        in_memory:
+            memory: ~
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        admin_secured_area:
+            pattern:   ^/admin
+            methods: [GET,POST]
+            anonymous: ~
+            provider: users
+            access_denied_url: admin_login
+            form_login:
+                login_path: admin_login
+                check_path: admin_login
+                default_target_path: /admin
+            logout:
+                path: admin_logout
+                target: admin_login
+            remember_me:
+                secret:   '%secret%'
+                lifetime: 604800 # 1 week in seconds
+                path: admin_homepage
+
+        main:
+            anonymous: ~
+            form_login:
+                login_path: /api/login
+                check_path: /api/login
+                username_parameter: _username
+                password_parameter: _password
+            logout:
+                path: games_logout
+            # activate different ways to authenticate
+
+            # http_basic: ~
+            # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+
+            # form_login: ~
+            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+
+    access_control:
+        - { path: ^/admin/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin, roles: ROLE_ADMIN }

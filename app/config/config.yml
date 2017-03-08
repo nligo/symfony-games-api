@@ -1,0 +1,125 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+    - { resource: "@GamesBundle/Resources/config/services.yml" }
+    - { resource: "@ApiBundle/Resources/config/services.yml" }
+    - { resource: "@AdminBundle/Resources/config/services.yml" }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: en
+    caipiao_url: http://api.caipiaokong.com/lottery
+    caipiao_name: bjpks
+    caipiao_format: json
+    caipiao_uid: 708843
+    caipiao_token: ef9071894118aa123fa5d495ef227b145ca0ea7a
+    caipiao_limit: 1
+#    SMS_BABY_URL: 'http://api.smsbao.com/'
+#    SMS_BABY_UESRNAME: lmgame
+#    SMS_BABY_PASSWORD: 123@qwe
+#    SMS_COMPANY: '捌跃科技'
+    yunxin_app_key: b8f65dd1cae429a9f09d67eb7ca04ef3
+    yunxin_app_secret: 24fd92cc58f4
+framework:
+    #esi:             ~
+#    translator: { fallbacks: [en] }
+    secret:          "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+#    serializer:      { enable_annotations: true }
+    templating:
+        engines: ['twig']
+    default_locale:  "%locale%"
+    trusted_hosts:   ~
+    trusted_proxies: ~
+    session:
+        # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
+        handler_id:  session.handler.native_file
+        save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
+    fragments:       ~
+    http_method_override: true
+    assets: ~
+    php_errors:
+        log: true
+
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   pdo_mysql
+        host:     "%database_host%"
+        port:     "%database_port%"
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
+        charset:  UTF8
+        # if using pdo_sqlite as your database driver:
+        #   1. add the path in parameters.yml
+        #     e.g. database_path: "%kernel.root_dir%/../var/data/data.sqlite"
+        #   2. Uncomment database_path in parameters.yml.dist
+        #   3. Uncomment next line:
+        #path:     "%database_path%"
+
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    spool:     { type: memory }
+
+
+# Nelmio CORS Configuration
+nelmio_cors:
+    defaults:
+        allow_credentials: false
+        allow_origin: ['*']
+        allow_headers: ['*']
+        allow_methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
+        max_age: 3600
+        hosts: []
+        origin_regex: false
+
+# FOSRest Configuration
+fos_rest:
+    body_listener: true
+    format_listener:
+        rules:
+            - { path: '^/api/*', priorities: ['json'], fallback_format: json, prefer_extension: true }
+            - { path: '^/', priorities: [ 'text/html', '*/*'], fallback_format: html, prefer_extension: true }
+    param_fetcher_listener: true
+    view:
+        view_response_listener: 'force'
+        formats:
+            json: true
+
+
+nelmio_api_doc: ~
+
+# 分页配置
+knp_paginator:
+    page_range: 20                      # 默认页面用于分页控制范围
+    default_options:
+        page_name: page                # 页面查询参数名称
+        sort_field_name: sort          # 排序字段查询参数名称
+        sort_direction_name: direction # 排序方向查询参数名称
+        distinct: true                 # 确保不同的结果,当ORM使用GROUP BY语句查询是有用的
+
+    template:
+        pagination: Pagination/my_page.html.twig     # 滑动分页控件模板
+        sortable: Pagination/sortable_link.html.twig # 链接模板

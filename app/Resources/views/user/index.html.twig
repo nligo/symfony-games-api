@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Users list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Usertotalscore</th>
+                <th>Safetotalscore</th>
+                <th>Username</th>
+                <th>Nickname</th>
+                <th>Headimg</th>
+                <th>Password</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Enabled</th>
+                <th>Isactivate</th>
+                <th>Isfull</th>
+                <th>Createtime</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
+                <td>{{ user.userTotalScore }}</td>
+                <td>{{ user.safeTotalScore }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.nickname }}</td>
+                <td>{{ user.headimg }}</td>
+                <td>{{ user.password }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles }}</td>
+                <td>{{ user.enabled }}</td>
+                <td>{{ user.isActivate }}</td>
+                <td>{{ user.isFull }}</td>
+                <td>{{ user.createTime }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('user_show', { 'id': user.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('user_edit', { 'id': user.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('user_new') }}">Create a new user</a>
+        </li>
+    </ul>
+{% endblock %}

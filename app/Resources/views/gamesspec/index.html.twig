@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Gamesspecs list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Specsign</th>
+                <th>Specbit</th>
+                <th>Gameid</th>
+                <th>Spectype</th>
+                <th>Firstfileddef</th>
+                <th>Createat</th>
+                <th>Updateat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for gamesSpec in gamesSpecs %}
+            <tr>
+                <td><a href="{{ path('gamesspec_show', { 'id': gamesSpec.id }) }}">{{ gamesSpec.id }}</a></td>
+                <td>{{ gamesSpec.specSign }}</td>
+                <td>{{ gamesSpec.specBit }}</td>
+                <td>{{ gamesSpec.gameId }}</td>
+                <td>{{ gamesSpec.specType }}</td>
+                <td>{{ gamesSpec.firstFiledDef }}</td>
+                <td>{{ gamesSpec.createAt }}</td>
+                <td>{{ gamesSpec.updateAt }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('gamesspec_show', { 'id': gamesSpec.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('gamesspec_edit', { 'id': gamesSpec.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('gamesspec_new') }}">Create a new gamesSpec</a>
+        </li>
+    </ul>
+{% endblock %}

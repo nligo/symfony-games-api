@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Gamesspec</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ gamesSpec.id }}</td>
+            </tr>
+            <tr>
+                <th>Specsign</th>
+                <td>{{ gamesSpec.specSign }}</td>
+            </tr>
+            <tr>
+                <th>Specbit</th>
+                <td>{{ gamesSpec.specBit }}</td>
+            </tr>
+            <tr>
+                <th>Gameid</th>
+                <td>{{ gamesSpec.gameId }}</td>
+            </tr>
+            <tr>
+                <th>Spectype</th>
+                <td>{{ gamesSpec.specType }}</td>
+            </tr>
+            <tr>
+                <th>Firstfileddef</th>
+                <td>{{ gamesSpec.firstFiledDef }}</td>
+            </tr>
+            <tr>
+                <th>Createat</th>
+                <td>{{ gamesSpec.createAt }}</td>
+            </tr>
+            <tr>
+                <th>Updateat</th>
+                <td>{{ gamesSpec.updateAt }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('gamesspec_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('gamesspec_edit', { 'id': gamesSpec.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

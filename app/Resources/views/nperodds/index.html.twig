@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Nperodds list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Ajnum</th>
+                <th>Ajds</th>
+                <th>Ajdx</th>
+                <th>Aelh</th>
+                <th>Gyd</th>
+                <th>Gyx</th>
+                <th>Gys</th>
+                <th>Gydan</th>
+                <th>Gyc</th>
+                <th>Gydsi</th>
+                <th>Gye</th>
+                <th>Gyf</th>
+                <th>Gyg</th>
+                <th>Gyh</th>
+                <th>Gyi</th>
+                <th>Gyj</th>
+                <th>Gyk</th>
+                <th>Gyl</th>
+                <th>Gym</th>
+                <th>Gyn</th>
+                <th>Gyo</th>
+                <th>Gyp</th>
+                <th>Gyq</th>
+                <th>Gyr</th>
+                <th>Gysj</th>
+                <th>Createat</th>
+                <th>Updateat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for nperOdd in nperOdds %}
+            <tr>
+                <td><a href="{{ path('nperodds_show', { 'id': nperOdd.id }) }}">{{ nperOdd.id }}</a></td>
+                <td>{{ nperOdd.ajNum }}</td>
+                <td>{{ nperOdd.ajDs }}</td>
+                <td>{{ nperOdd.ajDx }}</td>
+                <td>{{ nperOdd.aeLh }}</td>
+                <td>{{ nperOdd.gyd }}</td>
+                <td>{{ nperOdd.gyx }}</td>
+                <td>{{ nperOdd.gys }}</td>
+                <td>{{ nperOdd.gydan }}</td>
+                <td>{{ nperOdd.gyc }}</td>
+                <td>{{ nperOdd.gydsi }}</td>
+                <td>{{ nperOdd.gye }}</td>
+                <td>{{ nperOdd.gyf }}</td>
+                <td>{{ nperOdd.gyg }}</td>
+                <td>{{ nperOdd.gyh }}</td>
+                <td>{{ nperOdd.gyi }}</td>
+                <td>{{ nperOdd.gyj }}</td>
+                <td>{{ nperOdd.gyk }}</td>
+                <td>{{ nperOdd.gyl }}</td>
+                <td>{{ nperOdd.gym }}</td>
+                <td>{{ nperOdd.gyn }}</td>
+                <td>{{ nperOdd.gyo }}</td>
+                <td>{{ nperOdd.gyp }}</td>
+                <td>{{ nperOdd.gyq }}</td>
+                <td>{{ nperOdd.gyr }}</td>
+                <td>{{ nperOdd.gysj }}</td>
+                <td>{{ nperOdd.createAt }}</td>
+                <td>{{ nperOdd.updateAt }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('nperodds_show', { 'id': nperOdd.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('nperodds_edit', { 'id': nperOdd.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('nperodds_new') }}">Create a new nperOdd</a>
+        </li>
+    </ul>
+{% endblock %}
